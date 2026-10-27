@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Forest of Flower Spirits</title> 
+<link rel="manifest" href="manifest.json">
+<style> 
+body { background:#1a2a1a; color:white; font-family:sans-serif; text-align:center; margin:0; padding:20px } 
+#game { width:90%; max-width:400px; margin:auto; background:#2d4a22; padding:20px; border-radius:15px } 
+.choice { background:#4caf50; padding:12px; margin:8px; border-radius:10px; cursor:pointer; font-weight:bold } 
+.dialogue { background:#333; padding:10px; border-radius:8px; margin:10px 0; text-align:left } 
+img { border-radius:10px } 
+</style> 
+</head> 
+<body> 
+<div id="game"> 
+<h2>🌸 Forest of Flower Spirits 🌸</h2> 
+<img id="game-img" src="assets/title_screen.png" width="100%"> 
+<div id="dialogues"></div> 
+<div id="choices"></div> 
+</div> 
+<script> 
+let gameData = {};
+
+fetch('assets/dialogues_it.json') 
+  .then(r=>r.json()) 
+  .then(data=>{ 
+    gameData = data;
+    mostraBivio('bivio_1');
+  }).catch(err => {
+    document.getElementById('dialogues').innerHTML = "<div class='dialogue'>Errore nel caricamento della storia. Assicurati che i file siano nella cartella corretta!</div>";
+  }); 
+
+function mostraBivio(idBivio) {
+  let d = gameData[idBivio];
+  
+  if (!d) {
+    document.getElementById('dialogues').innerHTML = "<div class='dialogue'>Grazie per aver giocato!</div>";
+    document.getElementById('choices').innerHTML = "";
+    return;
+  }
+
+  if (d.immagine) {
+    document.getElementById('game-img').src = d.immagine;
+  }
+
+  document.getElementById('dialogues').innerHTML = d.dialoghi.map(x=>
+    `<div class='dialogue'><b>${x.personaggio}:</b> ${x.testo}</div>`
+  ).join(''); 
+
+  document.getElementById('choices').innerHTML = d.scelte.map(c=>
+    `<div class='choice' onclick="mostraBivio('${c.prossimo_bivio}')">${c.label} - ${c.ostacolo}</div>`
+  ).join('');
+}
+</script> 
+</body> 
+</html>

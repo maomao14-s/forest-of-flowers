@@ -1,0 +1,16 @@
+{
+  "name": "Forest of Flower Spirits",
+  "short_name": "FlowerSpirits",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1a2a1a",
+  "theme_color": "#2d4a22",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/title_screen.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
