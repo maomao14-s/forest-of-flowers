@@ -1,0 +1,55 @@
+{
+  "bivio_1": {
+    "immagine": "assets/tre_spiriti.png",
+    "dialoghi": [
+      {
+        "personaggio": "Spirito della Rosa",
+        "testo": "Benvenuto straniero! Noi siamo le custodi della radura fiorita. La foresta sta cambiando..."
+      }
+    ],
+    "scelte": [
+      {
+        "label": "Entra nel fitto della boscaglia",
+        "ostacolo": "Rovi appuntiti",
+        "prossimo_bivio": "bivio_foresta_oscura"
+      },
+      {
+        "label": "Parla con la ragazza vicino al sentiero",
+        "ostacolo": "Nessuno",
+        "prossimo_bivio": "bivio_viandante"
+      }
+    ]
+  },
+  "bivio_foresta_oscura": {
+    "immagine": "assets/quattro_spiriti_spine.png",
+    "dialoghi": [
+      {
+        "personaggio": "Spirito dei Rovi",
+        "testo": "Ti sei addentrato troppo. Le spine difendono i segreti più oscuri del bosco."
+      }
+    ],
+    "scelte": [
+      {
+        "label": "Torna alla radura luminosa",
+        "ostacolo": "Nessuno",
+        "prossimo_bivio": "bivio_1"
+      }
+    ]
+  },
+  "bivio_viandante": {
+    "immagine": "assets/ragazza_verde.png",
+    "dialoghi": [
+      {
+        "personaggio": "Elena",
+        "testo": "Ciao! Anche tu ti sei perso tra questi alberi magici? Sto cercando una via d'uscita."
+      }
+    ],
+    "scelte": [
+      {
+        "label": "Chiedi aiuto agli spiriti insieme a lei",
+        "ostacolo": "Nessuno",
+        "prossimo_bivio": "bivio_1"
+      }
+    ]
+  }
+}
